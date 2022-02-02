@@ -1,4 +1,4 @@
 module.exports = {
-  devServer: { port: 7070 },
-  lintOnSave: false
+  lintOnSave: false,
+  devServer: { port: 7070 }
 }
