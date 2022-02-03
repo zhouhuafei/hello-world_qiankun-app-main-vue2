@@ -18,6 +18,12 @@ registerMicroApps([
     entry: '//localhost:7071',
     container: '#container',
     activeRule: '/child1'
+  },
+  {
+    name: 'child2',
+    entry: '//localhost:7072',
+    container: '#container',
+    activeRule: '/child2'
   }
 ])
 start()
