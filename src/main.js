@@ -26,4 +26,7 @@ registerMicroApps([
     activeRule: '/child2'
   }
 ])
-start()
+// css沙箱机制
+// strictStyleIsolation: true // 使用`shadow DOM`进行隔离
+// experimentalStyleIsolation: true // 使用`css域`进行隔离
+start({ sandbox: { experimentalStyleIsolation: true } })
