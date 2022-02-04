@@ -12,6 +12,7 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
+// entry应该根据环境的不同，进行动态的变更。可以配合window.location实现。
 registerMicroApps([
   {
     name: 'child1',
