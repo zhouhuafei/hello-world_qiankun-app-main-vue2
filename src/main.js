@@ -16,7 +16,7 @@ new Vue({
 // 开发环境还是生产环境？可以使用process.env.NODE_ENV判断。
 // uat环境还是pre环境亦或是release环境？可以使用window.location判断。
 // 2、entry应该根据部署方式的不同，进行动态的变更。
-// 如果是独立域名部署，可以配合window.location判断应该使用哪个域名。
+// 如果是二级域名部署，可以配合window.location判断应该使用哪个域名。
 // 如果是二级路由部署，可以直接写死成/child1nginx和/child2nginx。
 registerMicroApps([
   {
