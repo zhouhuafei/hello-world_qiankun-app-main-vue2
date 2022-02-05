@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h2>$store.state.hello：{{$store.state.hello}}</h2>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -38,6 +39,11 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  created () {
+    setTimeout(() => {
+      this.$store.commit('CHANGE_HELLO')
+    }, 5000)
   }
 }
 </script>

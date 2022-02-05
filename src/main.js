@@ -18,13 +18,19 @@ registerMicroApps([
     name: 'child1',
     entry: '//localhost:7071',
     container: '#container',
-    activeRule: '/child1'
+    activeRule: '/child1',
+    props: {
+      mainStore: store
+    }
   },
   {
     name: 'child2',
     entry: '//localhost:7072',
     container: '#container',
-    activeRule: '/child2'
+    activeRule: '/child2',
+    props: {
+      mainStore: store
+    }
   }
 ])
 // css沙箱机制
