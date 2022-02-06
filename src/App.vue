@@ -12,7 +12,7 @@
       <div @click="$router.push({name:'Child1Home'})">Child1 - Home</div>
       <div @click="$router.push({name:'Child1About'})">Child1 - About</div>
       <div @click="$router.push({name:'Child2Home'})">Child2 - Home</div>
-      <div @click="$router.push({name:'Child2About'})">Child2 - Home</div>
+      <div @click="$router.push({name:'Child2About'})">Child2 - About</div>
     </div>
     <router-view/>
     <div id="container"></div>

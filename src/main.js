@@ -18,10 +18,11 @@ new Vue({
 // 2、entry应该根据部署方式的不同，进行动态的变更。
 // 如果是二级域名部署，可以配合window.location判断应该使用哪个域名。
 // 如果是二级路由部署，可以直接写死成/child1nginx和/child2nginx。
+const isProd = process.env.NODE_ENV === 'production'
 registerMicroApps([
   {
     name: 'child1',
-    entry: '//localhost:7071',
+    entry: isProd ? '/child1nginx' : '//localhost:7071',
     container: '#container',
     activeRule: '/child1',
     props: {
@@ -30,7 +31,7 @@ registerMicroApps([
   },
   {
     name: 'child2',
-    entry: '//localhost:7072',
+    entry: isProd ? '/child2nginx' : '//localhost:7072',
     container: '#container',
     activeRule: '/child2',
     props: {
