@@ -7,6 +7,8 @@
       <router-link to="/child2/">Child2</router-link>
     </div>
     <div>
+      <div @click="$router.push({name:'Home'})">Main - Home</div>
+      <div @click="$router.push({name:'About'})">Main - About</div>
       <div @click="$router.push({name:'Child1Home'})">Child1 - Home</div>
       <div @click="$router.push({name:'Child1About'})">Child1 - About</div>
       <div @click="$router.push({name:'Child2Home'})">Child2 - Home</div>
