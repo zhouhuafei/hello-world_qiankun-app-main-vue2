@@ -1,4 +1,4 @@
-import { registerMicroApps, start } from 'qiankun'
+import { registerMicroApps, start, initGlobalState } from 'qiankun'
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -43,3 +43,18 @@ registerMicroApps([
 // strictStyleIsolation: true // 使用`shadow DOM`进行隔离
 // experimentalStyleIsolation: true // 使用`css域`进行隔离
 start({ sandbox: { experimentalStyleIsolation: true } })
+// 主子应用通信
+if (initGlobalState) {
+  const state = { a: 1, b: 2 }
+  const actions = initGlobalState(state)
+  actions.onGlobalStateChange((state, prev) => { // 监听state的变更
+    console.log('在主应用中打印变更前的状态：', prev)
+    console.log('在主应用中打印变更后的状态：', state)
+  })
+  setTimeout(() => {
+    state.a = 11
+    state.b = 22
+    actions.setGlobalState(state) // 改变state的状态
+  }, 10000)
+  // actions.offGlobalStateChange() // 关闭state的监听
+}
