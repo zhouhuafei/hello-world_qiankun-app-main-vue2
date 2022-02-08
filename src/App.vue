@@ -1,43 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Main - Home</router-link> |
-      <router-link to="/about">Main - About</router-link> |
-      <router-link to="/child1/">Child1</router-link> |
-      <router-link to="/child2/">Child2</router-link>
-    </div>
-    <div>
-      <div @click="$router.push({name:'Home'})">Main - Home</div>
-      <div @click="$router.push({name:'About'})">Main - About</div>
-      <div @click="$router.push({name:'Child1Home'})">Child1 - Home</div>
-      <div @click="$router.push({name:'Child1About'})">Child1 - About</div>
-      <div @click="$router.push({name:'Child2Home'})">Child2 - Home</div>
-      <div @click="$router.push({name:'Child2About'})">Child2 - About</div>
-    </div>
+    <el-card style="margin: 10px;font-size: 12px;">
+      <div style="text-align: left;" slot="header">主应用main的跳转入口</div>
+      <el-button icon="el-icon-link" @click="$router.push({name:'Home'})">main - Home</el-button>
+      <el-button icon="el-icon-link" @click="$router.push({name:'About'})">main - About</el-button>
+      <el-button icon="el-icon-link" @click="$router.push({name:'Child1Home'})">child1 - Home</el-button>
+      <el-button icon="el-icon-link" @click="$router.push({name:'Child1About'})">child1 - About</el-button>
+      <el-button icon="el-icon-link" @click="$router.push({name:'Child2Home'})">child2 - Home</el-button>
+      <el-button icon="el-icon-link" @click="$router.push({name:'Child2About'})">child2 - About</el-button>
+    </el-card>
+
     <router-view/>
     <div id="container"></div>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  @import "@/scss/common";
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
     color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
   }
-}
 </style>
