@@ -48,7 +48,7 @@ start({ sandbox: { experimentalStyleIsolation: true } })
 
 // 微前端 - 主子应用通信 - 加if是因为qiankun的v3版本会移除这个api
 if (initGlobalState) {
-  const state = { a: 1, b: 2 }
+  const state = { a: 1, b: 2, mainStore: store }
   const actions = initGlobalState(state)
   if (actions.onGlobalStateChange) {
     actions.onGlobalStateChange((state, prev) => { // 监听state的变更
@@ -66,4 +66,10 @@ if (initGlobalState) {
     //   actions.offGlobalStateChange() // 关闭state的监听
     // }
   }, 10000)
+  if (actions.onGlobalStateChange) {
+    Vue.prototype.$onGlobalStateChange = actions.onGlobalStateChange
+  }
+  if (actions.setGlobalState) {
+    Vue.prototype.$setGlobalState = actions.setGlobalState
+  }
 }
