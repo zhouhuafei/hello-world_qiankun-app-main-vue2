@@ -62,6 +62,8 @@ if (initGlobalState) {
     if (actions.setGlobalState) {
       actions.setGlobalState(state) // 改变state的状态
     }
+    // if (actions.offGlobalStateChange) {
+    //   actions.offGlobalStateChange() // 关闭state的监听
+    // }
   }, 10000)
-  // actions.offGlobalStateChange() // 关闭state的监听
 }
