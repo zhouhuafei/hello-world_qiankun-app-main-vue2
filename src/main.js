@@ -12,6 +12,7 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
+// 微前端 - 注册应用
 // 1、entry应该根据环境的不同，进行动态的变更。
 // 开发环境还是生产环境？可以使用process.env.NODE_ENV判断。
 // uat环境还是pre环境亦或是release环境？可以使用window.location判断。
@@ -39,22 +40,28 @@ registerMicroApps([
     }
   }
 ])
-// css沙箱机制
+
+// 微前端 - css沙箱机制
 // strictStyleIsolation: true // 使用`shadow DOM`进行隔离
 // experimentalStyleIsolation: true // 使用`css域`进行隔离
 start({ sandbox: { experimentalStyleIsolation: true } })
-// 主子应用通信
+
+// 微前端 - 主子应用通信 - 加if是因为qiankun的v3版本会移除这个api
 if (initGlobalState) {
   const state = { a: 1, b: 2 }
   const actions = initGlobalState(state)
-  actions.onGlobalStateChange((state, prev) => { // 监听state的变更
-    console.log('在主应用中打印变更前的状态：', prev)
-    console.log('在主应用中打印变更后的状态：', state)
-  })
+  if (actions.onGlobalStateChange) {
+    actions.onGlobalStateChange((state, prev) => { // 监听state的变更
+      console.log('在主应用中打印变更前的状态：', prev)
+      console.log('在主应用中打印变更后的状态：', state)
+    })
+  }
   setTimeout(() => {
     state.a = 11
     state.b = 22
-    actions.setGlobalState(state) // 改变state的状态
+    if (actions.setGlobalState) {
+      actions.setGlobalState(state) // 改变state的状态
+    }
   }, 10000)
   // actions.offGlobalStateChange() // 关闭state的监听
 }
